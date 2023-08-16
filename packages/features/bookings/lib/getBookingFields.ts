@@ -15,7 +15,8 @@ import {
 type Fields = z.infer<typeof eventTypeBookingFields>;
 
 if (typeof window !== "undefined") {
-  console.warn("This file should not be imported on the client side");
+  // This file imports some costly dependencies, so we want to make sure it's not imported on the client side.
+  throw new Error("`getBookingFields` must not be imported on the client side.");
 }
 
 export const SMS_REMINDER_NUMBER_FIELD = "smsReminderNumber";
